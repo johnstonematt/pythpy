@@ -20,7 +20,10 @@ solana_client = Client(
 )
 # public address for the Pyth SOL oracle
 sol_oracle_address = 'H6ARHf6YXhGYeQfUzQNGk6rDNnLBQKrenN712K4AQJEG'
-oracle_account_info = pythpy.call_oracle_account(client=solana_client, address=sol_oracle_address)
+oracle_account_info = pythpy.call_oracle_account(
+    client=solana_client, 
+    address=sol_oracle_address
+)
 # view the info
 print(oracle_account_info)
 ```
