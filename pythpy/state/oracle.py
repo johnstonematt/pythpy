@@ -5,8 +5,8 @@ from construct import Struct, Int64ul, Int32ul, GreedyRange, Container, Int32sl
 
 from solana.publickey import PublicKey
 
-from pyth.layouts import PUBLIC_KEY_LAYOUT
-from pyth.state.core import StateCore
+from pythpy.layouts import PUBLIC_KEY_LAYOUT
+from pythpy.state.core import StateCore
 
 
 class Fraction(StateCore):
