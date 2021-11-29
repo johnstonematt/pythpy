@@ -8,6 +8,7 @@ from solana.publickey import PublicKey
 from pyth.layouts import PUBLIC_KEY_LAYOUT
 from pyth.state.core import StateCore
 
+
 class Fraction(StateCore):
     layout = Struct(
         'numerator' / Int64ul,
@@ -280,3 +281,7 @@ class OracleAccount:
         obj = cls.from_container(container=container)
         obj.parse_precision(factor= 10 ** (-obj.exponent))
         return obj
+
+    def get_price(self) -> float:
+        price = self.aggregate.price
+        return price

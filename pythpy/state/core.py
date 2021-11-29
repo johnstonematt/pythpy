@@ -2,6 +2,7 @@ import json
 from abc import ABC, abstractmethod
 from construct import Struct, Container
 
+
 class StateCore(ABC):
     layout: Struct = None
 

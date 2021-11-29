@@ -1,12 +1,14 @@
+import asyncio
 import base64
 
-from solana.rpc.api import Client
+from solana.rpc.async_api import AsyncClient
 from solana.publickey import PublicKey
 
-from pyth.state.oracle import OracleAccount
+from pythpy.state.oracle import OracleAccount
 
-def load_account_bytes(client: Client, address: PublicKey) -> bytes:
-    resp = client.get_account_info(pubkey=address)
+
+async def load_account_bytes(client: AsyncClient, address: PublicKey) -> bytes:
+    resp = await client.get_account_info(pubkey=address)
     if ('result' not in resp) or ('value' not in resp['result']):
         raise Exception('Cannot load bytes.')
     data = resp['result']['value']['data'][0]
@@ -14,8 +16,8 @@ def load_account_bytes(client: Client, address: PublicKey) -> bytes:
     return bytes_data
 
 
-def call_oracle_account(client: Client, address: PublicKey) -> OracleAccount:
-    bytes_data = load_account_bytes(
+async def call_oracle_account(client: AsyncClient, address: PublicKey) -> OracleAccount:
+    bytes_data = await load_account_bytes(
         client=client,
         address=address
     )
